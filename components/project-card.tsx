@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Project } from "@/lib/types";
+import Image from "next/image";
 
 interface ProjectCardProps {
   project: Project;
@@ -19,13 +20,15 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
+      className="w-full"
     >
       <Card className="overflow-hidden group border-primary/20 h-full">
         <div className="aspect-video relative overflow-hidden">
-          <img
+          <Image
             src={project.image}
             alt={project.title}
-            className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
         </div>
         <div className="p-6">
